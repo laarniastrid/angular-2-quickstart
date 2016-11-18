@@ -30,10 +30,6 @@ var HEROES = [
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Tour of Heroes';
-        // hero: Hero = {
-        //     id: 1,
-        //     name: 'Windstorm'
-        // };
         this.heroes = HEROES;
     }
     AppComponent.prototype.onSelect = function (hero) {
