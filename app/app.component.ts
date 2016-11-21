@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component }        from '@angular/core';
+import { OnInit }           from '@angular/core';
 
-export class Hero {
-    id: number;
-    name: string;
-}
+import { Hero }             from './hero';
+import { HeroService }      from './hero.service';
+
+// export class Hero {
+//     id: number;
+//     name: string;
+// }
 
 // const HEROES: Hero[] = [
 //     { id: 11, name: 'Mr. Nice' },
@@ -81,16 +85,29 @@ export class Hero {
             margin-right: .8em;
             border-radius: 4px 0 0 4px;
         }
-    `]
+    `],
+    providers: [
+        HeroService
+    ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'Tour of Heroes';
     // heroes = HEROES;
     heroes: Hero[];
     selectedHero: Hero;
 
+    constructor(private heroService: HeroService) {}
+
+    getHeroes(): void {
+        this.heroes = this.heroService.getHeroes();
+    }
+
     onSelect(hero: Hero): void {
         this.selectedHero = hero;
+    }
+
+    ngOnInit(): void {
+        this.getHeroes();
     }
 }
