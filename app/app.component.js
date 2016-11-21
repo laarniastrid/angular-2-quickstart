@@ -17,7 +17,7 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.getHeroes = function () {
         var _this = this;
-        this.heroService.getHeroes()
+        this.heroService.getHeroesSlowly()
             .then(function (heroes) {
             _this.heroes = heroes;
         });
